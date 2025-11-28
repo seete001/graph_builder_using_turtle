@@ -1,6 +1,7 @@
 import Knoten
 import turtle
 import Kanten
+import DFS
 
 
 def main():   
@@ -28,8 +29,16 @@ def main():
             Knoten.koordinaten_knoten(t)
         case _:
             print("ridi")
+            
+    graph = Kanten.create_kanten(t)
+    Kanten.draw_kanten(graph, t)
     
-    Kanten.draw_kanten(t)
+
+
+    choice=input("graph gezeichnet wählen Sir zwichen bfs oder baum\n")
+    DFS.dfs(graph,t)
     turtle.done()
+
+
 if __name__ == "__main__":
     main()

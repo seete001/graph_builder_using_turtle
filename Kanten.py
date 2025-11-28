@@ -6,12 +6,11 @@ def create_kanten(t):
     for node in koordinaten_database:
         verbindungen = input(f"Verbindiungen von {node}\n").split()
         graph[node] = verbindungen
-    print(graph)
-    print(koordinaten_database)
+    
     return graph
 
-def draw_kanten(t):
-    graph = create_kanten(t)
+def draw_kanten(graph, t):
+    
 
     for key, val in graph.items():
         x, y = koordinaten_database[key]
