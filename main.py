@@ -1,3 +1,8 @@
+import Knoten
+import turtle
+import Kanten
+
+
 def main():   
     gerichtet=False
 
@@ -6,15 +11,25 @@ def main():
     print("c)die koordinaten von knoten")
     eingabe=input("choose\n")
 
+    t = turtle.Turtle()
+    t.hideturtle()
+    t.penup()
+
+
     match eingabe:
+
         case "a":
-            pass
+            Knoten.self_nodes(t)
+            
         case "b":
-            pass
+            Knoten.user_nodes(t)
+
         case "c":
-            pass
+            Knoten.koordinaten_knoten(t)
         case _:
             print("ridi")
-
+    
+    Kanten.draw_kanten(t)
+    turtle.done()
 if __name__ == "__main__":
     main()
