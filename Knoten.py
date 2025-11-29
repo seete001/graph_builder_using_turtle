@@ -1,69 +1,70 @@
 import random
 import math
 
-farben = ["blue", "green", "purple", "orange", "red", "pink", "cyan"]
-buchstaben = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-koordinaten_database = {}
+colors = ["blue", "green", "purple", "orange", "red", "pink", "cyan"]
+alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+coordinations = {}
 
+r = 200
 
-
-def self_nodes(t):
+#Here user will set how many numbers he or she wants and the program creates the graph by itself
+def set_number_of_nodes(t):
     
-    anzahl = int(input("gib die Anzahl\n"))
-    r = 200
+    number = int(input("How many nodes you wanna create : "))
+    global r
 
-    for i in range(anzahl):
-        angle_deg = (360 / anzahl) * i
+    for i in range(number):
+        angle_deg = (360 / number) * i
         angle_rad = math.radians(angle_deg)
 
         x = math.cos(angle_rad) * r
         y = math.sin(angle_rad) * r
 
         t.goto(x, y)
-        t.dot(40, random.choice(farben))
+        t.dot(40, random.choice(colors))
         t.goto(x + 2, y - 8)
-        t.write(buchstaben[i], align="center", font=("Arial", 12, "bold"))
+        t.write(alphabet[i], align="center", font=("Arial", 12, "bold"))
 
-        koordinaten_database[buchstaben[i]] = [x, y]
+        coordinations[alphabet[i]] = [x, y]
 
-
-def user_nodes(t):
+#User will type the Names of the nodes like A B C and nodes will be set
+def user_set_nodes(t):
     nodes = input("Give the names of the nodes as a list (e.g : A B C D ...)\n").split()
 
-    anzahl = len(nodes)
-    r = 200
+    number = len(nodes)
+    global r
 
-    for i in range(anzahl):
-        angle_deg = (360 / anzahl) * i
+    for i in range(number):
+        angle_deg = (360 / number) * i
         angle_rad = math.radians(angle_deg)
 
         x = math.cos(angle_rad) * r
         y = math.sin(angle_rad) * r
 
         t.goto(x, y)
-        t.dot(40, random.choice(farben))
+        t.dot(40, random.choice(colors))
         t.goto(x + 2, y - 8)
         t.write(nodes[i], align="center", font=("Arial", 12, "bold"))
 
-        koordinaten_database[nodes[i]] = [x, y]
+        coordinations[nodes[i]] = [x, y]
     
     
+#User will be asked to be more exact and set the coordinations maually
+def set_coordinations(t):
     
-def koordinaten_knoten(t):
+    number = int(input("How many nodes would you like to set: "))
     
-    anzahl = int(input("Wie viele Knoten würest du eingeben?\n"))
-    
-    for i in range(anzahl):
-        raw = input("Gib die Koordinaten so x,y ein\n")
+    for i in range(number):
+        raw = input(f"Set the {i}th coordination(e.g. x, y): ")
         a, b = raw.split(",")
         x, y = int(a), int(b)
-        koordinaten_database[buchstaben[i]] = [x, y]
+        coordinations[alphabet[i]] = [x, y]
 
-    for k, v in koordinaten_database.items():
+    for k, v in coordinations.items():
         x=(v[0])
         y=(v[1])
         
         t.goto(x,y)
-        t.dot(40, random.choice(farben))
+        t.dot(40, random.choice(colors))
         t.goto(x + 2, y - 8)
         t.write(k, align="center", font=("Arial", 12, "bold"))

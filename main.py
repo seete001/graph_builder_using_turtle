@@ -5,38 +5,42 @@ import DFS
 
 
 def main():   
-    gerichtet=False
-
-    print("a)die anzahl von knoten")
-    print("b)die Namen von knoten")
-    print("c)die koordinaten von knoten")
-    eingabe=input("choose\n")
+    directed = False
+    
+    print("\033[2J\033[H")
+    print("1. Set number of nodes")
+    print("2. Set the names of nodes")
+    print("3. Set the coordinations")
+    print("4. Exit")
+    choice = int(input("choose: "))
 
     t = turtle.Turtle()
     t.hideturtle()
     t.penup()
 
 
-    match eingabe:
+    match choice:
 
-        case "a":
-            Knoten.self_nodes(t)
+        case 1:
+            Knoten.set_number_of_nodes(t)
+        case 2:
+            Knoten.user_set_nodes(t)
+        case 3:
+            Knoten.set_coordinations(t)
+        case 4:
+            exit()
             
-        case "b":
-            Knoten.user_nodes(t)
+    Kanten.set_edges()
 
-        case "c":
-            Knoten.koordinaten_knoten(t)
-        case _:
-            print("ridi")
-            
-    graph = Kanten.create_kanten(t)
-    Kanten.draw_kanten(graph, t)
+    Kanten.draw_edges(t)
     
+    isTree = DFS.dfs()
 
-
-    choice=input("graph gezeichnet wählen Sir zwichen bfs oder baum\n")
-    DFS.dfs(graph,t)
+    if not isTree[0]:
+        print("This is not a Tree", isTree[1])
+    else:
+        print("It can be a Tree")
+    
     turtle.done()
 
 
