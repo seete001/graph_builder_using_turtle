@@ -1,4 +1,5 @@
 In this Project we tried to work with one of the best library of python turtle, it is absolutely useful when working with graphs or trees. It will let you draw, set nodes and edges very ez and simple.
+<img width="896" height="626" alt="Screenshot 2025-11-30 at 15 38 14" src="https://github.com/user-attachments/assets/6fd0e688-1edc-4cb5-93cc-607e4fd7383f" />
 
 The actual Project is for the my friend Bardia which has to be done and presented at University Geothe of Frankfurt, but i asked him to let me publish this wonderful project on my github. 
 
