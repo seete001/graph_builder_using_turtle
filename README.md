@@ -19,6 +19,7 @@ Then the program will see how many names there are and tries to set the nodes
 Finally user must define the edges and connections between nodes which is the core of DFS then what will be happening is that the DFS file starts to check whether the connections make this Graph a Tree or not.
 
 
+<img width="888" height="613" alt="Screenshot 2025-11-30 at 15 55 05" src="https://github.com/user-attachments/assets/bc82983d-6569-4302-931d-d314bc41c308" />
 
 
 Thanks for your time and i recommend you guys to see what turtle actually does ...
