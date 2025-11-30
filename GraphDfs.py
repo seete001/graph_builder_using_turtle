@@ -1,9 +1,5 @@
-from Kanten import graph
-
 #Depth first Search to search for a Cycle or missing nodes to validate whether it is a tree or not
-def dfs():
-
-    global graph
+def dfs(graph):
     
     seen = set()
     

@@ -8,9 +8,7 @@ coordinations = {}
 r = 200
 
 #Here user will set how many numbers he or she wants and the program creates the graph by itself
-def set_number_of_nodes(t):
-    
-    number = int(input("How many nodes you wanna create : "))
+def set_number_of_nodes(number, t):
     global r
 
     for i in range(number):
@@ -28,9 +26,8 @@ def set_number_of_nodes(t):
         coordinations[alphabet[i]] = [x, y]
 
 #User will type the Names of the nodes like A B C and nodes will be set
-def user_set_nodes(t):
-    nodes = input("Give the names of the nodes as a list (e.g : A B C D ...)\n").split()
-
+def user_set_nodes(nodes, t):
+    
     number = len(nodes)
     global r
 
@@ -52,14 +49,6 @@ def user_set_nodes(t):
 #User will be asked to be more exact and set the coordinations maually
 def set_coordinations(t):
     
-    number = int(input("How many nodes would you like to set: "))
-    
-    for i in range(number):
-        raw = input(f"Set the {i}th coordination(e.g. x, y): ")
-        a, b = raw.split(",")
-        x, y = int(a), int(b)
-        coordinations[alphabet[i]] = [x, y]
-
     for k, v in coordinations.items():
         x=(v[0])
         y=(v[1])

@@ -1,8 +1,11 @@
 import Knoten
 import turtle
 import Kanten
-import DFS
+import GraphDfs
 
+t = turtle.Turtle()
+
+alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 def main():   
     directed = False
@@ -18,23 +21,36 @@ def main():
     t.hideturtle()
     t.penup()
 
-
+    nodes = []
     match choice:
 
         case 1:
-            Knoten.set_number_of_nodes(t)
+            number = int(input("How many nodes you got: "))
+            Knoten.set_number_of_nodes(number, t)
         case 2:
-            Knoten.user_set_nodes(t)
+            nodes = input("Enter the names (format: A B C ..): ").split()
+            Knoten.user_set_nodes(nodes, t)
         case 3:
+            Knoten.coordinations = {}
+            n = int(input("How many nodes you got: "))
+            for i in range(n):
+                raw = input("Enter the {i + 1}th coordination(format: x, y): ")
+                a,b = raw.split(",")
+                lst = [float(a), float(b)]
+                Knoten.coordinations[alphabet[i]] = lst
             Knoten.set_coordinations(t)
         case 4:
             exit()
             
-    Kanten.set_edges()
+    graph = {}
+    for node in nodes:
+        connections = input(f"Enter the neighbours of {node}: ").split()
+        graph[node] = connections
 
-    Kanten.draw_edges(t)
+
+    Kanten.draw_edges(graph, t)
     
-    isTree = DFS.dfs()
+    isTree = GraphDfs.dfs(graph)
 
     if not isTree[0]:
         print("This is not a Tree", isTree[1])
